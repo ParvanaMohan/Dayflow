@@ -1,1 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayflow - Daily Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div class="app">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+            <span>dayflow</span>
+        </div>
+
+        <div class="sidebar-intro">
+            <h2>Your task library</h2>
+            <p>Drag a task onto your timeline to plan your day.</p>
+        </div>
+
+        <div class="library-heading">
+            <span>YOUR TASKS</span>
+            <span class="small-label">DRAG TO PLAN</span>
+        </div>
+
+        <div class="task-library" id="taskLibrary">
+
+            <div class="library-task" draggable="true"
+                data-name="Study" data-duration="60">
+                <div class="task-color purple"></div>
+                <div class="library-task-info">
+                    <strong>Study</strong>
+                    <span>1 hour</span>
+                </div>
+                <span class="drag-icon">⠿</span>
+            </div>
+
+            <div class="library-task" draggable="true"
+                data-name="Exercise" data-duration="45">
+                <div class="task-color pink"></div>
+                <div class="library-task-info">
+                    <strong>Exercise</strong>
+                    <span>45 minutes</span>
+                </div>
+                <span class="drag-icon">⠿</span>
+            </div>
+
+            <div class="library-task" draggable="true"
+                data-name="Reading" data-duration="30">
+                <div class="task-color blue"></div>
+                <div class="library-task-info">
+                    <strong>Reading</strong>
+                    <span>30 minutes</span>
+                </div>
+                <span class="drag-icon">⠿</span>
+            </div>
+
+            <div class="library-task" draggable="true"
+                data-name="Work" data-duration="120">
+                <div class="task-color orange"></div>
+                <div class="library-task-info">
+                    <strong>Work</strong>
+                    <span>2 hours</span>
+                </div>
+                <span class="drag-icon">⠿</span>
+            </div>
+
+            <div class="library-task" draggable="true"
+                data-name="Break" data-duration="15">
+                <div class="task-color green"></div>
+                <div class="library-task-info">
+                    <strong>Break</strong>
+                    <span>15 minutes</span>
+                </div>
+                <span class="drag-icon">⠿</span>
+            </div>
+
+            <div class="library-task" draggable="true"
+                data-name="Meals" data-duration="30">
+                <div class="task-color yellow"></div>
+                <div class="library-task-info">
+                    <strong>Meals</strong>
+                    <span>30 minutes</span>
+                </div>
+                <span class="drag-icon">⠿</span>
+            </div>
+
+            <div class="library-task" draggable="true"
+                data-name="Personal time" data-duration="60">
+                <div class="task-color teal"></div>
+                <div class="library-task-info">
+                    <strong>Personal time</strong>
+                    <span>1 hour</span>
+                </div>
+                <span class="drag-icon">⠿</span>
+            </div>
+
+        </div>
+
+        <!-- CUSTOM TASK -->
+        <div class="custom-task-section">
+
+            <h3>Create your own task</h3>
+
+            <form id="customTaskForm">
+
+                <input
+                    type="text"
+                    id="customTaskName"
+                    placeholder="Enter task name"
+                    required
+                >
+
+                <label class="duration-label">Duration</label>
+                <div class="duration-selects">
+                    <select id="customTaskHours" aria-label="Hours"></select>
+                    <select id="customTaskMinutes" aria-label="Minutes"></select>
+                </div>
+
+                <button type="submit" id="add-task-button">
+                    + Add to library
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="footer-icon">✦</div>
+            <div>
+                <strong>Make today count.</strong>
+                <p>One task at a time.</p>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <div class="welcome">
+                <p class="eyebrow">YOUR PERSONAL DAILY PLANNER</p>
+                <h1>Plan your day<span>.</span></h1>
+                <p class="subtitle">
+                    Organise your time and make every moment count.
+                </p>
+            </div>
+
+            <div class="date-control">
+                <label for="datePicker">SELECT DATE</label>
+                <input type="date" id="datePicker">
+                <span id="dateStatus">Today's plan</span>
+            </div>
+
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon lavender-icon">▤</div>
+                <div>
+                    <p>Total tasks</p>
+                    <h2 id="totalTasks">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green-icon">✓</div>
+                <div>
+                    <p>Completed</p>
+                    <h2 id="completedTasks">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange-icon">◷</div>
+                <div>
+                    <p>Remaining</p>
+                    <h2 id="remainingTasks">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon pink-icon">↗</div>
+                <div>
+                    <p>Progress</p>
+                    <h2 id="progressPercentage">0%</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- DAILY PROGRESS -->
+        <section class="progress-section">
+
+            <div class="progress-top">
+                <div>
+                    <h3>Daily progress</h3>
+                    <p id="progressMessage">Start planning your day!</p>
+                </div>
+
+                <span id="progressCount">0 / 0 completed</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+        </section>
+
+
+        <!-- TIMELINE -->
+        <section class="planner-section">
+
+            <div class="planner-heading">
+
+                <div>
+                    <p class="eyebrow">YOUR SCHEDULE</p>
+                    <h2>Your timeline</h2>
+                    <p id="calendarDate"></p>
+                </div>
+
+                <div class="timeline-badge">
+                    24-HOUR PLANNER
+                </div>
+
+            </div>
+
+            <div class="notice review-notice" id="reviewNotice">
+                You are viewing a past date. You can mark tasks complete, but cannot edit this schedule.
+            </div>
+
+            <div class="notice planning-notice" id="planningNotice">
+                Drag tasks from the left and drop them at your preferred time.
+            </div>
+
+            <div class="timeline-wrapper" id="timelineWrapper">
+
+                <div class="timeline">
+
+                    <div class="time-labels" id="timeLabels">
+                    </div>
+
+                    <div class="timeline-content" id="timelineContent">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer class="main-footer">
+            Made with care <span>♥</span> for a more organised day.
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- EDIT TASK POPUP -->
+<div class="modal-overlay" id="editModal">
+    <div class="modal">
+        <h3>Edit task</h3>
+
+        <input type="text" id="editTaskName" placeholder="Task name">
+
+        <label class="duration-label">Duration</label>
+        <div class="duration-selects">
+            <select id="editTaskHours" aria-label="Hours"></select>
+            <select id="editTaskMinutes" aria-label="Minutes"></select>
+        </div>
+
+        <div class="modal-actions">
+            <button type="button" id="editCancel">Cancel</button>
+            <button type="button" id="editSave">Save</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- TOAST MESSAGE -->
+<div class="toast" id="toast"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
