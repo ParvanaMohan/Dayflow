@@ -13,13 +13,7 @@ The application provides a visual interface for organizing activities throughout
 Dayflow is developed as an educational project using basic web technologies to demonstrate website development, interactive user interfaces, and practical time-management tools.
 
 ## Screenshots
-
-### 1. Homepage
-
 ![Dayflow Homepage](Screenshots/homepage.png)
-
-### 2. Create Activities
-
 ![Dayflow Create Activities](Screenshots/create.png)
 
 ## Main Features
