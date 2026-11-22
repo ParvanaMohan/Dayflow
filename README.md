@@ -2,7 +2,7 @@
 
 ## Website Link
 
-[https://parvanamohan.github.io/Day-Planner/](https://parvanamohan.github.io/Day-Planner/)
+[https://parvanamohan.github.io/Dayflow/](https://parvanamohan.github.io/Dayflow/)
 
 ## Project Overview
 
